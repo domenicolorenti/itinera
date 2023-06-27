@@ -154,7 +154,7 @@ Remember to execute the Helm commands to bundle the Ranking and Review services 
 
   
 
-For any further queries, please reach out to me (mailto:domenicolorenti.dev@gmail.com) or open an issue in the repository.
+For any further queries, please reach out to me [domenicolorenti.dev@gmail.com](mailto:domenicolorenti.dev@gmail.com) or open an issue in the repository.
 
   
 
