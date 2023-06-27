@@ -99,7 +99,7 @@ We use Helm, a package manager for Kubernetes, to bundle services together. In o
 ### Clone repository
 
 ```bash
-git clone TODO
+git clone https://github.com/domenicolorenti/itinera.git
 ```  
 
 
