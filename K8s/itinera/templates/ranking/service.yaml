@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "itinera.fullname" . }}-ranking
+  labels:
+    {{- include "itinera.ranking.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.ranking.service.type }}
+  ports:
+    - port: {{ .Values.ranking.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "itinera.ranking.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,5 @@
+global:
+  photoUrl: http://photo:8083
+  profileUrl: http://profile:8080
+  reviewUrl: http://review:8082
+  rankingUrl: http://ranking:8000

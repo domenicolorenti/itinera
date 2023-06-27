@@ -1,0 +1,28 @@
+{{- if .Values.review.autoscaling.enabled }}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "itinera.fullname" . }}-review
+  labels:
+    {{- include "itinera.review.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "itinera.fullname" . }}-review
+  minReplicas: {{ .Values.review.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.review.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.review.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ .Values.review.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if .Values.review.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: {{ .Values.review.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+{{- end }}

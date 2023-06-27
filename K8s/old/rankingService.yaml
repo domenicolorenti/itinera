@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rankingpbc
+  namespace: default
+spec:
+  selector:
+    app: rankingpbc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000

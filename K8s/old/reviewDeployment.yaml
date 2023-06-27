@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviewpbc
+  namespace: default
+  labels:
+    app: reviewpbc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviewpbc
+  template:
+    metadata:
+      labels:
+        app: reviewpbc
+    spec:
+      containers:
+      - name: reviewpbccont
+        env: 
+          - name: PROFILE_URL
+            value: http://profilepbc
+          - name: SEARCH_URL
+            value: http://searchpbc
+          - name: RANKING_URL
+            value: http://rankingpbc
+          - name: PHOTO_URL
+            value: http://photopbc
+        imagePullPolicy: Always
+        image: domenicolorenti/reviewpbc:arm
+        ports:
+        - containerPort: 8082

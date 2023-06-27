@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "itinera.fullname" . }}-review
+  labels:
+    {{- include "itinera.review.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.review.service.type }}
+  ports:
+    - port: {{ .Values.review.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "itinera.review.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searchpbc
+  namespace: default
+  labels:
+    app: searchpbc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: searchpbc
+  template:
+    metadata:
+      labels:
+        app: searchpbc
+    spec:
+      containers:
+      - name: searchpbccont
+        env: 
+          - name: PROFILE_URL
+            value: http://profilepbc
+          - name: REVIEW_URL
+            value: http://reviewpbc
+          - name: RANKING_URL
+            value: http://rankingpbc
+          - name: PHOTO_URL
+            value: http://photopbc
+        imagePullPolicy: Always
+        image: domenicolorenti/searchpbc:arm
+        ports:
+        - containerPort: 8081

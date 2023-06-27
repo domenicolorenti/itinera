@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: searchpbc
+  namespace: default
+spec:
+  selector:
+    app: searchpbc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081

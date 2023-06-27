@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: default
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgrescont
+        env: 
+          - name: POSTGRES_DB
+            value: itineradb
+          - name: POSTGRES_USER
+            value: itinera
+          - name: POSTGRES_PASSWORD
+            value: admin
+        imagePullPolicy: Always
+        image: postgres
+        ports:
+        - containerPort: 5432

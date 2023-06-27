@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rankingpbc
+  namespace: default
+  labels:
+    app: rankingpbc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rankingpbc
+  template:
+    metadata:
+      labels:
+        app: rankingpbc
+    spec:
+      containers:
+      - name: rankingpbccont
+        env: 
+          - name: SEARCH_URL
+            value: http://searchpbc
+          - name: REVIEW_URL
+            value: http://reviewpbc
+          - name: RANKING_URL
+            value: http://photogpbc
+          - name: PHOTO_URL
+            value: http://profilepbc
+          - name: DB_USER
+            value: itinera
+          - name: DB_NAME
+            value: itineradb
+          - name: DB_PASSWORD
+            value: admin
+          - name: DB_HOST
+            value: postgres
+          - name: DB_PORT  
+            value: "80"
+        imagePullPolicy: Always
+        image: domenicolorenti/rankingpbc:arm
+        ports:
+        - containerPort: 8080

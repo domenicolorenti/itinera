@@ -1,0 +1,4 @@
+global:
+  photoUrl: http://photo:8083
+  profileUrl: http://profile:8080
+  searchUrl: http://search:8081

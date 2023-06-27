@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviewpbc
+  namespace: default
+spec:
+  selector:
+    app: reviewpbc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8082
